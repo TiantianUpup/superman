@@ -57,8 +57,9 @@ SpringBoot
   `-DarchetypeGroupId`：superman的组ID，值不需要进行修改  
   `-DarchetypeArtifactId`：superman的artifactId，值不需要进行改变
 
-- 4.修改resource文件夹下的配置文件
-该文件夹下有`application.properties` ，`logback.properties`，`logback-spring.xml`三个配置文件
+- 4.修改resources文件夹下的配置文件，并将resources文件标记成Resources Root  
+  
+  该文件夹下有`application.properties` ，`logback.properties`，`logback-spring.xml`三个配置文件
   - `application.properties`配置文件的修改
 `application.properties` 主要是`Spring`、`MyBatisPlus`和数据库的配置信息
     ```
