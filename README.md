@@ -36,7 +36,8 @@ SpringBoot
   ```
   git clone https://github.com/TiantianUpup/superman.git
   ```
-- 2.打开superman工程，将其安装到本地仓库
+- 2.打开superman工程，将其安装到本地仓库  
+运行命令前先切换到20190815-v2update分支，master分支被我玩坏了【真丢人！！！】  
 运行如下命令
   ```
   mvn clean install
@@ -55,9 +56,8 @@ SpringBoot
   `DartifactId`：项目唯一标识符，即项目名称  
   `-DarchetypeGroupId`：superman的组ID，值不需要进行修改  
   `-DarchetypeArtifactId`：superman的artifactId，值不需要进行改变
-- 4.移动配置文件
-因为使用`archetype`生成项目时会将`resource`下面的文件丢失，所以目前将配置文件放在了`web`模块下的`resource`包下，创建项目成功后需手动将文件移动到`web`模块下的`resource`文件夹下，并将`resource`文件成标记成`Resources Root`
-- 5.修改resource文件夹下的配置文件
+
+- 4.修改resource文件夹下的配置文件
 该文件夹下有`application.properties` ，`logback.properties`，`logback-spring.xml`三个配置文件
   - `application.properties`配置文件的修改
 `application.properties` 主要是`Spring`、`MyBatisPlus`和数据库的配置信息
@@ -85,7 +85,7 @@ SpringBoot
     <fileNamePattern>${LOG_ERROR_HOME}//%d.log</fileNamePattern>
     ```
     将`//`修改为`/`
-- 6 使用代码生成器生成`controller`、`service`、`dao`、`po`层代码
+- 5 使用代码生成器生成`controller`、`service`、`dao`、`po`层代码
 代码生成器类位于`service`模块下的`generator`包下，只需要初始化几个字段值运行就可以生成相应的代码。在运行前首先在项目根目录下创建一个`mp-generator-output`文件夹，该文件夹的名字和`OUTPUT_DIR`字段值保持一致
   - `PACKAGE_NAME`  
   生成代码的包名，和项目的包名一致，负责复制过去代码会有一些小问题
@@ -105,7 +105,7 @@ SpringBoot
   数据库用户名
   - `PASSWORD`  
   数据库密码
-- 7.将生成的代码移动到对应模块对应包下
+- 6.将生成的代码移动到对应模块对应包下
   - `controller`文件夹  
   实体类对应的`Controller`，将该目录下的类移到`web`模块下的`controller`包下
   - `mapper`文件夹
@@ -116,12 +116,12 @@ SpringBoot
     将`service`目录下的接口移到`service`模块下的`service`包下，`impl`目录下的类移到`service`模块下的`service.impl`包下
   - po文件夹 
   将该目录下的类移到`model`模块下的`po`包下，并修改继承关系，统一继承`BasePO`类，因为`BasePO`类 包含了`id`、`gmtCreate`、`gmtModified`、`deleted`这些数据库基本字段，需将生成的实体类手动删除这些重复字段。同时自动生成的`po`类缺失了`@TableName`、`@TableField`注解需手动补充。注解的使用方式可参考`BasePO`类
-- 8.修改`web`模块`aspect`包下的环绕通知
+- 7.修改`web`模块`aspect`包下的环绕通知
   ```
   @Around("execution(* yourpackage.controller..*(..))")
   ```
   该切面主要用于拦截controller层返回的结果，将其封装成统一结果返回
-- 9 启动项目  
+- 8 启动项目  
 `web`模块下的`Runner`类为启动类，运行该类即可启动，默认端口为8081
 
 
