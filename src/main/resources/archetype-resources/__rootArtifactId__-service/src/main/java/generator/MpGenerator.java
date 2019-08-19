@@ -24,7 +24,7 @@ public class MpGenerator {
     /**
      * 代码生成路径
      */
-    private static final String OUTPUT_DIR = "";
+    private static final String OUTPUT_DIR = "mp-generator-output";
 
     /**
      * 代码注释作者
@@ -37,9 +37,9 @@ public class MpGenerator {
     /**
      * 数据库信息
      */
-    private static final String DATABASE = "test";
+    private static final String DATABASE = "";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "123456";
+    private static final String PASSWORD = "";
     private static final String URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE
             + "?characterEncoding=UTF8&serverTimezone=UTC";
 
