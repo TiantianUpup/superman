@@ -1,4 +1,4 @@
-package ${package};
+package ${package}.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;

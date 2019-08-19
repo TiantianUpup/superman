@@ -1,4 +1,4 @@
-package ${package}.impl;
+package ${package}.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
