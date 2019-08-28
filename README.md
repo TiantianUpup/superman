@@ -58,7 +58,7 @@ SpringBoot
   `-DarchetypeArtifactId`：superman的artifactId，值不需要进行改变
 
 - 4.修改resource文件夹下的配置文件
-该文件夹下有`application.properties` ，`logback.properties`，`logback-spring.xml`三个配置文件
+修改该文件夹下`application.properties` ，`log4j2-spring.xml`两个配置文件
   - `application.properties`配置文件的修改
 `application.properties` 主要是`Spring`、`MyBatisPlus`和数据库的配置信息
     ```
@@ -73,18 +73,16 @@ SpringBoot
     ```
     指定`MybatisPlus`实体类别名的包，即`model`模块的`po`层包名，默认`MybatiPlus`的`mapper`文件保存在`resource`下的`mapper`文件夹下，可自行修改
 
-  - `logback.properties`配置文件的修改
- `logback.properties`定义了`error`级别日志和`info`级别日志的保存地址
+   - `log4j2-spring.xml`配置文件的修改  
+   `log4j2-spring.xml`主要是日志输出规则的定义
     ```
-    LOG_ERROR_HOME=  
-    LOG_INFO_HOME=
+    <properties>
+        <property name="LOG_INFO_HOME">Your LOG_INFO_HOME</property>
+        <property name="LOG_ERROR_HOME">Your LOG_ERROR_HOME</property>
+        <property name="PATTERN">%d [%t] %-5p [%c] - %m%n</property>
+    </properties>
     ```
-    - `logback-spring.xml`配置文件的修改
-  `logback-spring.xml`主要是日志输出规则的定义，若为`windows`系统无需进行修改，若为`linux os`或`mac os`，则需修改日志保存地址
-    ```
-    <fileNamePattern>${LOG_ERROR_HOME}//%d.log</fileNamePattern>
-    ```
-    将`//`修改为`/`
+    修改为你的日志存放路径
 - 5 使用代码生成器生成`controller`、`service`、`dao`、`po`层代码
 代码生成器类位于`service`模块下的`generator`包下，只需要初始化几个字段值运行就可以生成相应的代码。在运行前首先在项目根目录下创建一个`mp-generator-output`文件夹，该文件夹的名字和`OUTPUT_DIR`字段值保持一致
   - `PACKAGE_NAME`  
