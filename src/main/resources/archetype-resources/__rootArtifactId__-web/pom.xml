@@ -24,8 +24,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.h2t.test</groupId>
-            <artifactId>maven-study-service</artifactId>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-service</artifactId>
         </dependency>
 
         <dependency>
