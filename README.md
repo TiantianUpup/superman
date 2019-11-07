@@ -22,6 +22,7 @@ SpringBoot
 - [x] 统一异常的处理
 - [x] 统一结果封装
 - [x] log4j日志的配置
+- [x] swagger2整合
 - [x] MybatisPlus
   - [x] 代码生成器 
   - [x] 分页
@@ -121,6 +122,10 @@ SpringBoot
   该切面主要用于拦截controller层返回的结果，将其封装成统一结果返回
 - 8 启动项目  
 `web`模块下的`Runner`类为启动类，运行该类即可启动，默认端口为8081
+- 9 swagger2使用  
+该工程已整合swagger2框架，若想使用只需要修改`controller`模块`configuration`包下的`swagger2`配置类，然后在控制类中使用`swagger2`注解即可  
+关于swagger2的使用可以参考：[springboot整合swagger2](https://github.com/TiantianUpup/springboot-demo/blob/master/springboot-swagger2/README.md)
+
 
 
 
