@@ -90,7 +90,7 @@ SpringBoot
 代码生成器类位于`service`模块下的`generator`包下，只需要初始化几个字段值运行就可以生成相应的代码。在运行前首先在项目根目录下创建一个`mp-generator-output`文件夹，该文件夹的名字和`OUTPUT_DIR`字段值保持一致
   - `PACKAGE_NAME`  
   生成代码的包名，和项目的包名一致，负责复制过去代码会有一些小问题  
-  -`OUTPUT_DIR `
+  - `OUTPUT_DIR `
   生成代码保存文件地址，默认保存在项目下的`mp-generator-output`文件夹下，可以修改为自定义保存地址
   - `AUTHOR`  
   注释中作者的名字
