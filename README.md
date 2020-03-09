@@ -125,6 +125,9 @@ SpringBoot
 - 9 swagger2使用  
 该工程已整合swagger2框架，若想使用只需要修改`controller`模块`configuration`包下的`swagger2`配置类，然后在控制类中使用`swagger2`注解即可  
 关于swagger2的使用可以参考：[springboot整合swagger2](https://github.com/TiantianUpup/springboot-demo/blob/master/springboot-swagger2/README.md)
+- 10[新添] RequestLogAspect使用
+新添RequestLogAspect类，打印请求信息，方便和上层甩锅，使用时只需替换`@Pointcut("execution(* your_package.controller..*(..))")`中的`your_package`即可
+
 
 
 
