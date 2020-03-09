@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 public class RequestLogAspect {
     private final static Logger LOGGER = LoggerFactory.getLogger(RequestLogAspect.class);
 
-    @Pointcut("execution(* your_package..*(..))")
+    @Pointcut("execution(* your_package.controller..*(..))")
     public void requestServer() {
     }
 
