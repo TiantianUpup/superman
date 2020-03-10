@@ -22,6 +22,7 @@ SpringBoot
 - [x] 统一异常的处理
 - [x] 统一结果封装
 - [x] log4j日志的配置
+- [x] swagger2整合
 - [x] MybatisPlus
   - [x] 代码生成器 
   - [x] 分页
@@ -57,9 +58,8 @@ SpringBoot
   `-DarchetypeGroupId`：superman的组ID，值不需要进行修改  
   `-DarchetypeArtifactId`：superman的artifactId，值不需要进行改变
 
-- 4.修改resources文件夹下的配置文件，并将resources文件标记成Resources Root  
-  
-  该文件夹下有`application.properties` ，`logback.properties`，`logback-spring.xml`三个配置文件
+- 4.修改resource文件夹下的配置文件
+修改该文件夹下`application.properties` ，`log4j2-spring.xml`两个配置文件
   - `application.properties`配置文件的修改
 `application.properties` 主要是`Spring`、`MyBatisPlus`和数据库的配置信息
     ```
@@ -74,23 +74,21 @@ SpringBoot
     ```
     指定`MybatisPlus`实体类别名的包，即`model`模块的`po`层包名，默认`MybatiPlus`的`mapper`文件保存在`resource`下的`mapper`文件夹下，可自行修改
 
-  - `logback.properties`配置文件的修改
- `logback.properties`定义了`error`级别日志和`info`级别日志的保存地址
+   - `log4j2-spring.xml`配置文件的修改  
+   `log4j2-spring.xml`主要是日志输出规则的定义
     ```
-    LOG_ERROR_HOME=  
-    LOG_INFO_HOME=
+    <properties>
+        <property name="LOG_INFO_HOME">Your LOG_INFO_HOME</property>
+        <property name="LOG_ERROR_HOME">Your LOG_ERROR_HOME</property>
+        <property name="PATTERN">%d [%t] %-5p [%c] - %m%n</property>
+    </properties>
     ```
-    - `logback-spring.xml`配置文件的修改
-  `logback-spring.xml`主要是日志输出规则的定义，若为`windows`系统无需进行修改，若为`linux os`或`mac os`，则需修改日志保存地址
-    ```
-    <fileNamePattern>${LOG_ERROR_HOME}//%d.log</fileNamePattern>
-    ```
-    将`//`修改为`/`
+    修改为你的日志存放路径
 - 5 使用代码生成器生成`controller`、`service`、`dao`、`po`层代码
 代码生成器类位于`service`模块下的`generator`包下，只需要初始化几个字段值运行就可以生成相应的代码。在运行前首先在项目根目录下创建一个`mp-generator-output`文件夹，该文件夹的名字和`OUTPUT_DIR`字段值保持一致
   - `PACKAGE_NAME`  
-  生成代码的包名，和项目的包名一致，负责复制过去代码会有一些小问题  
-  - `OUTPUT_DIR `
+  生成代码的包名，和项目的包名一致，负责复制过去代码会有一些小问题
+  -`OUTPUT_DIR `
   生成代码保存文件地址，默认保存在项目下的`mp-generator-output`文件夹下，可以修改为自定义保存地址
   - `AUTHOR`  
   注释中作者的名字
@@ -124,6 +122,13 @@ SpringBoot
   该切面主要用于拦截controller层返回的结果，将其封装成统一结果返回
 - 8 启动项目  
 `web`模块下的`Runner`类为启动类，运行该类即可启动，默认端口为8081
+- 9 swagger2使用  
+该工程已整合swagger2框架，若想使用只需要修改`controller`模块`configuration`包下的`swagger2`配置类，然后在控制类中使用`swagger2`注解即可  
+关于swagger2的使用可以参考：[springboot整合swagger2](https://github.com/TiantianUpup/springboot-demo/blob/master/springboot-swagger2/README.md)
+- 10[新添] RequestLogAspect使用
+新添RequestLogAspect类，打印请求信息，方便和上层甩锅，使用时只需替换`@Pointcut("execution(* your_package.controller..*(..))")`中的`your_package`即可
+
+
 
 
 
