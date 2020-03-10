@@ -37,7 +37,6 @@ public class RequestLogAspect {
         LOGGER.info("URL                : {}", request.getRequestURL().toString());
         LOGGER.info("HTTP Method        : {}", request.getMethod());
         LOGGER.info("Class Method       : {}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
-        LOGGER.info("Request Args       : {}", joinPoint.getArgs());
     }
 
 
@@ -45,7 +44,8 @@ public class RequestLogAspect {
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         long start = System.currentTimeMillis();
         Object result = proceedingJoinPoint.proceed();
-        LOGGER.info("Response Args        : {}", result);
+        LOGGER.info("Request Params     : {}", getRequestParams(proceedingJoinPoint));
+        LOGGER.info("Result               : {}", result);
         LOGGER.info("Time Cost            : {} ms", System.currentTimeMillis() - start);
 
         return result;
@@ -54,5 +54,34 @@ public class RequestLogAspect {
     @After("requestServer()")
     public void doAfter(JoinPoint joinPoint) {
         LOGGER.info("===============================End========================");
+    }
+
+    /**
+     * 获取入参
+     * @param proceedingJoinPoint
+     *
+     * @return
+     * */
+    private Map<String, Object> getRequestParams(ProceedingJoinPoint proceedingJoinPoint) {
+        Map<String, Object> requestParams = new HashMap<>();
+
+        //参数名
+        String[] paramNames = ((MethodSignature)proceedingJoinPoint.getSignature()).getParameterNames();
+        //参数值
+        Object[] paramValues = proceedingJoinPoint.getArgs();
+
+        for (int i = 0; i < paramNames.length; i++) {
+            Object value = paramValues[i];
+
+            //如果是文件对象
+            if (value instanceof MultipartFile) {
+                MultipartFile file = (MultipartFile) value;
+                value = file.getOriginalFilename();  //获取文件名
+            }
+
+            requestParams.put(paramNames[i], value);
+        }
+
+        return requestParams;
     }
 }
