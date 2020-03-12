@@ -129,7 +129,8 @@ SpringBoot
 新添RequestLogAspect类，打印请求信息，方便和上层甩锅，使用时只需替换`@Pointcut("execution(* your_package.controller..*(..))")`中的`your_package`即可
 
 
-
+### 更新记录
+- 2020.03.12 => 添加日志请求切面 RequestLogAspect.java
 
 
 附：[superman archetype生成demo工程地址](https://github.com/TiantianUpup/superman-demo)
