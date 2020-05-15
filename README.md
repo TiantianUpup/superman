@@ -134,5 +134,4 @@ SpringBoot
 
 
 附：[superman archetype生成demo工程地址](https://github.com/TiantianUpup/superman-demo)<br>
-附:与本代码配套文章 => [撸一个Java脚手架，一统团队项目结构风格](https://juejin.im/post/5d53c08ff265da03ed194974)
-文章讲解如何写一个archetype，目录结构该怎么建立
+附：与本代码配套文章 => [撸一个Java脚手架，一统团队项目结构风格](https://juejin.im/post/5d53c08ff265da03ed194974)，这篇文章讲解如何写一个archetype，目录结构该怎么建立
